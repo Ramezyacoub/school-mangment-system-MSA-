@@ -30,7 +30,7 @@ void options()
         cin >> day;
     }
 
-   student first[999];
+   
   
    
 
