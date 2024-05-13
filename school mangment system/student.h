@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "date.h"
-class student: public date 
+class Student: public date 
 {
 protected:
 
@@ -12,14 +12,16 @@ protected:
 
 public:
 
-	void setname()
+
+	void Addrecord(string n , int c)
 	{
+		
+			name = n;
+	
+			Class = c;
 
-	}
-
-	string getname()
-	{
-
+		
 	}
 };
 
+//void student::setAddrecord(string n , int c)
