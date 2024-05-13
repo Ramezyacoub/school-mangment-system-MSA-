@@ -73,7 +73,7 @@ void Addrecord()
                 cin >> c;
                 s[i].Addrecord(n, c);
                 break;
-                
+                //maichel
             }
             
 
