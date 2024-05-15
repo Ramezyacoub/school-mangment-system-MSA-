@@ -13,23 +13,6 @@ protected:
 
 public:
 	
-	void setmonth()
-	{
-		
-	}
-
-	void setday()
-	{
-
-	}
-
-	string getmonth()
-	{
-
-	}
-
-	int getday()
-	{
-
-	}
+	date() : day(0){}
+	
 };
