@@ -2,6 +2,7 @@
 #include <iomanip>
 #include "student.h"
 #include "Fee.h"
+#include "Salary.h"
 #include <vector>
 #include <cstdlib>
 using namespace std;
@@ -92,14 +93,38 @@ void Mdeleterecord()
 
 void Mcalculatefee()
 {
-    Fee studentfee;
+        Fee studentfee;
         float f, d, a;
         cout << "Enter Fees,dues and advance : \n";
         cout << "Fees: "; cin >> f;
         cout << endl << "Dues: "; cin >> d;
         cout << endl << "Advance: "; cin >> a;
-        studentfee.calculatefee(f, d, a);
-        studentfee.printfee();
+        if ((f < 0) || (d < 0) || (a < 0))
+        {
+            cout << "Enter Valid Number \n";
+        }
+        else
+        { 
+            studentfee.calculatefee(f, d, a);
+            studentfee.printfee();
+        }   
+}
+
+void Mcalculatesalary()
+{
+    Salary Teachersalary;
+    float da, co;
+    if ( (da < 0) || (co < 0) )
+    {
+        cout << "Enter Valid Number \n";
+    }
+    else
+    {
+        cout << "Enter working Days and cost rate : \n";
+        cout << "Days: "; cin >> da;
+        cout << endl << "Cost Rate: "; cin >> co;
+        Teachersalary.printsalary();
+    }
 }
 
 void options()

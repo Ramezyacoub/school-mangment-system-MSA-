@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fee.h" />
+    <ClInclude Include="Salary.h" />
     <ClInclude Include="student.h" />
     <ClInclude Include="teacher.h" />
     <ClInclude Include="date.h" />
