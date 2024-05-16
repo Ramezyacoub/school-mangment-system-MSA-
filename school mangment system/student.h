@@ -25,11 +25,21 @@ public:
 			RollNo = d;
 	}
 	
+	void setname(string N)
+	{
+		name = N;
+	}
+
 	string getName()
 	{
 		return name;
 	}
 
+	void setClass(int c)
+	{
+
+		 Class = c;
+	}
 	int getRollno()
 	{
 		return RollNo;
