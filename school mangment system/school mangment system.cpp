@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include "student.h"
+#include "Fee.h"
 #include <vector>
 #include <cstdlib>
 using namespace std;
@@ -89,6 +90,18 @@ void Mdeleterecord()
     cout << "Record not found." << endl;
 }
 
+void Mcalculatefee()
+{
+    Fee studentfee;
+        float f, d, a;
+        cout << "Enter Fees,dues and advance : \n";
+        cout << "Fees: "; cin >> f;
+        cout << endl << "Dues: "; cin >> d;
+        cout << endl << "Advance: "; cin >> a;
+        studentfee.calculatefee(f, d, a);
+        studentfee.printfee();
+}
+
 void options()
 {
     cout << "PLEASE ENTER ACCOUNT TYPE " << endl;
@@ -133,6 +146,9 @@ void options()
                 break;
             case 4:
                 Mdeleterecord();
+                break;
+            case 5:
+                Mcalculatefee();
                 break;
             default:
                 cout << endl << endl << "Exit succeeded ";
