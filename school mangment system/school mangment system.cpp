@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include "student.h"
+#include "Fee.h"
+#include "Salary.h"
 #include <vector>
 #include <cstdlib>
 using namespace std;
@@ -91,93 +93,6 @@ void Mdeleterecord()
     cout << "Record not found." << endl;
 }
 
-
-void Editclass()
-{
-    int Edit;
-    int checkclass;
-    cout << "Enter ID to Edit record: ";
-    cin >> Edit;
-   
-    cout << "Enter New class: ";
-    cin >> checkclass;
-    
-    for (int i = 0; i < St.size(); i++)
-    {
-        if (Edit == St[i].getRollno())
-        {
-            St[i].setClass(checkclass);
-             
-        }
-    }
-
-}
-
-
-
-
-void Editname()
-{
-    string  editname;
-    int Edit;
-    cout << "Enter ID to Edit record: ";
-    cin >> Edit;
-    cout << "Enter new name: " << endl;
-    cin.ignore();
-    getline(cin, editname);
-    for (int i = 0; i< St.size(); i++)
-    {
-        if (Edit == St[i].getRollno())
-        {
-            
-             St[i].setname(editname);
-             cout << "The Name was Changed" << endl;
-            
-        }
-       
-    }
-
-}
-
-void modifyRecord()
-{
-   
-    int Select;
-    do
-    {
-        cout << "PLEASE ENTER THE CHOICE TO EDIT" << endl;
-        cout << "1 :: Edit Name" << endl;
-        cout << "2 :: Edit Class" << endl;
-        cout << "3 :: Edit Day" << endl;
-        cout << "4 :: EXIT" << endl;
-        cin >> Select;
-       // string editname;
-
-        switch (Select)
-        {
-        case 1:
-            Editname();
-            break;
-
-        case 2:
-            Editclass();
-
-            break;
-        case 3:
-            Editclass();
-
-            break;
-        
-        case 4:
-            options();
-
-        }
-
-    } while (Select != 3);
-} 
-
-
-
 void options()
 {
     cout << "PLEASE ENTER ACCOUNT TYPE " << endl;
@@ -224,6 +139,9 @@ void options()
                 break;
             case 4:
                 Mdeleterecord();
+                break;
+            case 5:
+                Mcalculatefee();
                 break;
             default:
                 cout << endl << endl << "Exit succeeded ";

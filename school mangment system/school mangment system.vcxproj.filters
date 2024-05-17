@@ -27,6 +27,9 @@
     <ClCompile Include="date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Fee.cpp">
+      <Filter>Source Files\Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="student.h">
@@ -36,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Salary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
