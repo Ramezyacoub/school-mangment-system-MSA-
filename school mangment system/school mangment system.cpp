@@ -1,13 +1,12 @@
 #include <iostream>
 #include <iomanip>
 #include "student.h"
-#include "Fee.h"
 #include "Salary.h"
 #include <vector>
 #include <cstdlib>
 using namespace std;
 
-void options();
+void start();
 
 void EndText()
 {
@@ -17,32 +16,59 @@ void EndText()
 int D = 0;
 vector<Student> St;
 Student S;
+int day;
+int chkDate()
+{
+   
+    do
+    {
+        cout << "Day of registration: ";
+
+
+        cin >> day;
+        if (day < 1 || day > 31)
+            cout << "Enter valid day " << endl;
+
+    } while (day < 1 || day > 31);
+    return day;
+}
+
 void Maddrecord()
 {
-       
-   
+
+    chkDate();
+
     string name, month;
-    int c, day;
+    int c ;
 
     D += 1;
-    cout << "Day of registration: ";
-    cin >> day;
-    cout << "Month of registration: ";
-    cin >> month;
-    cin.ignore();
 
-    cout << "Generated ID: " << 24000 + D << endl;
+    
 
-    cout << endl << "name: ";
-    getline(cin, name);
+        cout << "Month of registration: ";
 
-    cout << "class: ";
-    cin >> c;
+        cin >> month;
+        cin.ignore();
 
-    S.setday(day);
-    S.setmonth(month);
-    S.Addrecord(name, c, 24000 + D);
-    St.push_back(S);
+        cout << "Generated ID: " << 24000 + D << endl;
+
+        cout << endl << "name: ";
+        getline(cin, name);
+
+        do
+        {
+            cout << "class: ";
+            cin >> c;
+            if (c < 1 || c > 12)
+                cout << "school class should from 1 to 12" << endl;;
+        } while (c < 1 || c > 12);
+
+        S.setday(day);
+        S.setmonth(month);
+        S.Addrecord(name, c, 24000 + D);
+        St.push_back(S);
+        cout << endl << "==Record Saved==" << endl << endl;
+
 }
 
 bool found = false;
@@ -74,6 +100,125 @@ void Msearchrecord()
 
 }
 
+
+void Editclass()
+{
+    int Edit;
+    int checkclass;
+    cout << "Enter ID to Edit record: ";
+    cin >> Edit;
+
+    do
+    {
+        cout << "Enter New class: ";
+        cin >> checkclass;
+    
+        if (checkclass < 1 || checkclass > 12)
+            cout << "school class should from 1 to 12" << endl;;
+    } while (checkclass < 1 || checkclass > 12);
+    
+
+    for (int i = 0; i < St.size(); i++)
+    {
+        if (Edit == St[i].getRollno())
+        {
+            St[i].setClass(checkclass);
+
+        }
+    }
+
+}
+
+
+void EditDay()
+{
+
+    int x;
+    cout << "Enter ID to Edit record:";
+    cin >> x;
+
+    for (int i = 0; i < St.size(); i++)
+    {
+
+        if (x == St[i].getRollno())
+        {
+           int retur = chkDate();
+
+            St[i].setday(retur);
+            cout << endl<<"Day changed succesfully" <<endl;
+        }
+     }
+}
+
+
+
+void Editname()
+{
+    string  editname;
+    int Edit;
+    cout << "Enter ID to Edit record: ";
+    cin >> Edit;
+    cout << "Enter new name: " << endl;
+    cin.ignore();
+    getline(cin, editname);
+    for (int i = 0; i < St.size(); i++)
+    {
+        if (Edit == St[i].getRollno())
+        {
+
+            St[i].setname(editname);
+            cout << "The Name was Changed" << endl;
+
+        }
+
+    }
+
+}
+
+void modifyRecord()
+{
+
+    int Select;
+    do
+    {
+        cout << "PLEASE ENTER THE CHOICE TO EDIT" << endl;
+        cout << "1 :: Edit Name" << endl;
+        cout << "2 :: Edit Class" << endl;
+        cout << "3 :: Edit Day" << endl;
+        cout << "4 :: EXIT To Main menue" << endl;
+        cin >> Select;
+        // string editname;
+
+        switch (Select)
+        {
+        case 1:
+            Editname();
+            break;
+
+        case 2:
+            Editclass();
+
+            break;
+        case 3:
+            EditDay();
+
+            break;
+
+        case 4:
+            start();
+
+        }
+
+    } while (Select != 3);
+}
+
+
+
+
+
+
+
+
 void Mdeleterecord()
 {
     int Delrecoed;
@@ -93,71 +238,103 @@ void Mdeleterecord()
     cout << "Record not found." << endl;
 }
 
-void options()
+
+
+//void Mcalculatesalary()
+//{
+//    Salary Teachersalary;
+//    float da, co;
+//
+//    cout << "Enter working Days and cost rate : \n";
+//    cout << "Days: "; cin >> da;
+//    cout << endl << "Cost Rate: "; cin >> co;
+//
+//    if ((da <= 0) || (co <= 0))
+//    {
+//        cout << "Enter InValid Number \n";
+//    }
+//    else
+//    {
+//        Teachersalary.teacherFee(da, co);
+//        Teachersalary.printsalary();
+//    }
+//}
+
+
+
+
+
+
+void start()
 {
     cout << "PLEASE ENTER ACCOUNT TYPE " << endl;
     cout << "1 :: student" << endl << "2 :: Teacher and Staffs " << endl;
     cout << "3 :: EXIT" << endl;
     cout << "Account type choices " << endl;
     int x;
-   
+
     cin >> x;
     cin.ignore();
 
-   
-
-    if (x == 3)
+    do
     {
-        atexit(EndText);
-    }
-    if (x == 1)
-    {
-        int expression;
 
-        do
+        if (x == 3)
         {
-            cout << "PLEASE ENTER THE CHOICE" << endl;
-            cout << "1 :: Add record" << endl;
-            cout << "2 :: Search record" << endl;
-            cout << "3 :: Modify record" << endl;
-            cout << "4 :: Delete record" << endl;
-            cout << "5 :: Calculate fee" << endl;
-            cout << "6 :: EXIT" << endl;
-            cin >> expression;
-            cin.ignore();
+            atexit(EndText);
+        }
+        if (x == 1)
+        {
+            int expression;
 
-            switch (expression)
+            do
             {
-            case 1:
-                Maddrecord();
-                break;
-            case 2:
-                Msearchrecord();
-                break;
-            case 3 :
-                modifyRecord();
-                break;
-            case 4:
-                Mdeleterecord();
-                break;
-            case 5:
-                Mcalculatefee();
-                break;
-            default:
-                cout << endl << endl << "Exit succeeded ";
-                break;
-            case 6 :
-                void EndText();
-                break;
-                    
-            }
-        } while (expression != 6);
-    }
-}
+                cout << "PLEASE ENTER THE CHOICE" << endl;
+                cout << "1 :: Add record" << endl;
+                cout << "2 :: Search record" << endl;
+                cout << "3 :: Modify record" << endl;
+                cout << "4 :: Delete record" << endl;
+                cout << "5 :: Calculate fee" << endl;
+                cout << "6 :: EXIT" << endl;
+                cin >> expression;
+                cin.ignore();
+
+                switch (expression)
+                {
+                case 1:
+                    Maddrecord();
+                    break;
+                case 2:
+                    Msearchrecord();
+                    break;
+                case 3:
+                    modifyRecord();
+                    break;
+                case 4:
+                    Mdeleterecord();
+                    break;
+                case 5:
+                    for (auto& student : St)
+                        student.fee(St);  // range-based for loop instead. 
+                    break;
+
+                default:
+                    cout << endl << endl << "Exit succeeded ";
+                    break;
+                case 6:
+                    void EndText();
+                    break;
+
+                }
+            } while (expression != 6);
+        }
+    } while (1 > x > 3);
+} 
+
 
 int main()
 {
-    options();
+    start();
 
     return 0;
 }
