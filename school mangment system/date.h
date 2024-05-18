@@ -1,5 +1,6 @@
 
-
+#ifndef date_h
+#define date_h
 # include <iostream>
 # include <string>
 using namespace std;
@@ -13,6 +14,10 @@ protected:
 
 public:
 	
-	date() : day(0){}
+	date() : day(0) 
+	{
+		month = "";
+	}
 	
 };
+#endif 

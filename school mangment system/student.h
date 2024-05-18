@@ -1,147 +1,110 @@
 #pragma once
 #include <iostream>
 #include "date.h"
-# include <vector>
-class Student: public date 
-{
+#include <vector>
 
-	
+using namespace std;
 
+class Student : public date {
 protected:
+    string name;
+    int Class;
+    int RollNo;
+    double fee_paid;
+    double Newtotal;
 
-	string name;
-	
-	int Class ;
-
-	int RollNo ;
-
-	int fee_paid;
-
-	
 public:
+    Student() : fee_paid(0), Newtotal(0) {}
 
+    void setRolle(int d) {
+        RollNo = d;
+    }
 
+    void setname(string N) 
+    {
+        name = N;
+    }
 
-	void Addrecord(string n , int c , int d)
-	{
-		
-			name = n;
-	
-			Class = c;
+    string getName()
+    {
+       
+        return name;
+    }
 
-			RollNo = d;
+    void setClass(int c) 
+    {
+        Class = c;
+    }
 
-	}
-	
-	void setname(string N)
-	{
-		name = N;
-	}
+    int getRollno()
+    {
+        return RollNo;
+    }
 
-	string getName()
-	{
-		return name;
-	}
+    int getClass() 
+    {
+        return Class;
+    }
 
-	void setClass(int c)
-	{
+    void setmonth(string m) 
+    {
+        month = m;
+    }
 
-		 Class = c;
-	}
-	int getRollno()
-	{
-		return RollNo;
-	}
-	int getClass()
-	{
-		return Class;
-	}
+    void setday(int d) 
+    {
+        day = d;
+    }
 
-	void setmonth(string m)
-	{
-		month = m;
-	}
+    string getmonth() 
+    {
+        return month;
+    }
 
-	void setday(int d)
-	{
-		day = d;
-	}
+    int getday() 
+    {
+        return day;
+    }
 
-	string getmonth()
-	{
-		return month;
-	}
+    void fee(vector<Student>& mysamevector)
+    {
+        int ID;
+        cout << "Enter Student ID: ";
+        cin >> ID;
 
-	int getday()
-	{
-		return day; 
-	
-	}
-	
+        for (int i = 0; i < mysamevector.size(); i++) {
+            if (mysamevector[i].RollNo == ID) {
+                double payment;
+                cout << "Enter fee paid for the student " << mysamevector[i].getName() << " ID: " << mysamevector[i].getRollno() << ": ";
+                cin >> payment;
 
-	void fee(vector<Student>& mysamevector) {
-		
-		int  ID;
-		for (int i = 0; i < mysamevector.size(); i++) {
+                mysamevector[i].fee_paid += payment;
 
-			cout << "Enter Student ID : ";
-			cin >> ID;
+                double total = 80000;
+                double due = total - mysamevector[i].fee_paid;
 
-			if (mysamevector[i].getRollno() == ID) {
+                double fine = 0.0;
+                double advance = 0.0;
 
+                if (due < 0) {
+                    advance = -due;
+                    due = 0;
+                }
+                else if (due > 0) {
+                    fine = 0.14 * due;
+                }
 
-				cout << "Enter fee paid for The student " << mysamevector[i].getName() << "ID : " << mysamevector[i].getRollno() << ": ";
+                mysamevector[i].Newtotal = due;
 
-				cin >> mysamevector[i].fee_paid;    //instade of  St[i]. or .mysamevector [i].setfee_paid(retur);  becouse its in the class no need for this
-				//i dont need pushback here coz i update value for each pushedback studeent
-				double total = 80000;
-				double due = total - mysamevector[i].fee_paid;
+                cout << "Fee Payment Recorded for student with ID " << ID << "\n";
+                cout << "Fine: " << fine << endl;
+                cout << "Due: " << due << endl;
+                cout << "Total: " << total << endl;
+                cout << "Advance: " << advance << endl;
 
-				double fine = 0.0;
-
-
-				double advance = 0.0;
-
-
-				if (due < 0) {
-					advance = -due;
-
-
-					due = 0;
-
-				}
-				else if (due > 0) {
-					fine = 0.14 * total;
-
-				}
-
-				cout << "Fee Payment Recorded for student with ID " << ID << "\n";
-
-				cout << "Fine: " << fine << endl;
-
-
-				cout << "Due: " << due << endl;
-
-				cout << "Total: " << total << endl;
-
-
-				cout << "Advance: " << advance << endl;
-
-
-				return;
-
-			}
-			else
-			{
-				cout << "Student with ID " << ID << " not found.\n";
-			}
-		}
-
-		
-		
-	}
-
-
+                return;
+            }
+        }
+        cout << "Student with ID " << ID << " not found.\n";
+    }
 };
-
-//void student::setAddrecord(string n , int c)
