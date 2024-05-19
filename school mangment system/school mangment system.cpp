@@ -80,7 +80,8 @@ void Msearchrecord()
     cout << "Enter ID to search for: ";
     cin >> checkID;
 
-   
+
+ 
     for (int i = 0; i < St.size(); i++)
     {
         if (checkID == St[i].getRollno())
@@ -110,24 +111,27 @@ void Editclass()
     cout << "Enter ID to Edit record: ";
     cin >> Edit;
 
-    do
-    {
-        cout << "Enter New class: ";
-        cin >> checkclass;
-    
-        if (checkclass < 1 || checkclass > 12)
-            cout << "school class should from 1 to 12" << endl;;
-    } while (checkclass < 1 || checkclass > 12);
-    
-
     for (int i = 0; i < St.size(); i++)
     {
         if (Edit == St[i].getRollno())
         {
+            do
+            {
+                cout << "Enter New class: ";
+                cin >> checkclass;
+
+                if (checkclass < 1 || checkclass > 12)
+                    cout << "school class should from 1 to 12" << endl;;
+            } while (checkclass < 1 || checkclass > 12);
             St[i].setClass(checkclass);
 
         }
     }
+
+    
+    
+
+   
 
 }
 
@@ -160,15 +164,16 @@ void Editname()
     int Edit;
     cout << "Enter ID to Edit record: ";
     cin >> Edit;
-    cout << "Enter new name: " << endl;
-    cin.ignore();
-    getline(cin, editname);
+   
     for (int i = 0; i < St.size(); i++)
     {
         if (Edit == St[i].getRollno())
         {
 
             St[i].setname(editname);
+            cout << "Enter new name: " << endl;
+            cin.ignore();
+            getline(cin, editname);
             cout << "The Name was Changed" << endl;
 
         }
@@ -373,9 +378,6 @@ void Editposition()
     cin >> Edit;
 
  
-        cout << "Enter New Position: ";
-        cin >> checkposition;
-
 
 
     for (int i = 0; i < Ta.size(); i++)
@@ -383,6 +385,10 @@ void Editposition()
         if (Edit == Ta[i].getRollno())
         {
             Ta[i].setposition(checkposition);
+
+            cout << "Enter New Position: ";
+            cin >> checkposition;
+
 
         }
     }
@@ -419,15 +425,16 @@ void EEditname()
     int Edit;
     cout << "Enter ID to Edit record: ";
     cin >> Edit;
-    cout << "Enter new  name: " << endl;
-    cin.ignore();
-    getline(cin, editname);
+  
     for (int i = 0; i < Ta.size(); i++)
     {
         if (Edit == Ta[i].getRollno())
         {
 
             Ta[i].setname(editname);
+            cout << "Enter new  name: " << endl;
+            cin.ignore();
+            getline(cin, editname);
             cout << "The Name was Changed" << endl;
 
         }
