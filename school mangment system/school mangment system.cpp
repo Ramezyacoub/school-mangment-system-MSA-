@@ -551,9 +551,10 @@ void start()
                 break;
 
             case 6: break;
-
+                  exit(0);
+                  cout << endl << endl << "Exit succeeded ";
             default:
-                cout << endl << endl << "Exit succeeded ";
+                cout << endl << endl << "Enter valid value ";
                 break;
                
             }
@@ -604,10 +605,11 @@ void start()
                             // range-based for loop instead. 
                         break;
                     case 6:
-
+                        exit(0);
+                        cout << endl << endl << "Exit succeeded ";
                         break;
                     default:
-                        cout << endl << endl << "Exit succeeded ";
+                        cout << endl << endl << "Enter valid value ";
                         break;
                    
 
